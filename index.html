@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Heart</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffdde1);
+}
+
+#mainBtn {
+    padding: 20px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    background: red;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 20px pink;
+    transition: 0.3s;
+}
+
+#mainBtn:hover {
+    transform: scale(1.1);
+}
+
+.loveText {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button id="mainBtn">View My Heart ❤️</button>
+
+<audio id="bgMusic" src="song.mp3" loop></audio>
+
+<script>
+const btn = document.getElementById("mainBtn");
+const music = document.getElementById("bgMusic");
+
+btn.addEventListener("click", function() {
+    btn.style.display = "none";
+    music.play();
+
+    setInterval(createLove, 200);
+});
+
+function createLove() {
+    const love = document.createElement("div");
+    love.classList.add("loveText");
+    love.innerText = "I Love You Madhoo ❣️";
+    love.style.left = Math.random() * 100 + "vw";
+    love.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(love);
+
+    setTimeout(() => {
+        love.remove();
+    }, 6000);
+}
+</script>
+
+</body>
+</html>
